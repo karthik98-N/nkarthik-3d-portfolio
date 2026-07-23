@@ -34,11 +34,19 @@ const DAY_GROUND_MATERIAL   = new THREE.MeshStandardMaterial({ color: '#2d4a1d',
 const NIGHT_GROUND_MATERIAL = new THREE.MeshStandardMaterial({ color: '#0a1a05', roughness: 1, metalness: 0 })
 
 const Experience = () => {
-  const { 
-    isStarted, currentView, setView, isDayTime, rainLevel, dayPhase, nightPhase, 
-    isDroneMode, isPlacementMode, isHorseMode,
-    isTouchToMoveEnabled, setHorseMovement, setEagleMovement 
-  } = useStore()
+  const isStarted = useStore((s) => s.isStarted)
+  const currentView = useStore((s) => s.currentView)
+  const setView = useStore((s) => s.setView)
+  const isDayTime = useStore((s) => s.isDayTime)
+  const rainLevel = useStore((s) => s.rainLevel)
+  const dayPhase = useStore((s) => s.dayPhase)
+  const nightPhase = useStore((s) => s.nightPhase)
+  const isDroneMode = useStore((s) => s.isDroneMode)
+  const isPlacementMode = useStore((s) => s.isPlacementMode)
+  const isHorseMode = useStore((s) => s.isHorseMode)
+  const isTouchToMoveEnabled = useStore((s) => s.isTouchToMoveEnabled)
+  const setHorseMovement = useStore((s) => s.setHorseMovement)
+  const setEagleMovement = useStore((s) => s.setEagleMovement)
   const cameraRef    = useRef()
   const controlsRef  = useRef()
   const groupRef     = useRef()

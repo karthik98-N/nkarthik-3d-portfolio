@@ -3,7 +3,9 @@ import { ChevronUp, ChevronDown, ChevronLeft, ChevronRight, Zap } from 'lucide-r
 import { useStore } from '../store/useStore';
 
 const HorseControlsUI = () => {
-  const { isHorseMode, horseMovement, setHorseMovement } = useStore();
+  const isHorseMode = useStore((s) => s.isHorseMode);
+  const horseMovement = useStore((s) => s.horseMovement);
+  const setHorseMovement = useStore((s) => s.setHorseMovement);
 
   if (!isHorseMode) return null;
 

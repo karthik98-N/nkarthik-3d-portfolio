@@ -5,7 +5,8 @@ import { X } from 'lucide-react'
 import useBreakpoint from '../hooks/useBreakpoint'
 
 const Content = () => {
-  const { currentView, setView } = useStore()
+  const currentView = useStore((s) => s.currentView)
+  const setView = useStore((s) => s.setView)
   const { isMobile, isTablet, isDesktop } = useBreakpoint()
 
   const contentData = {
@@ -13,11 +14,11 @@ const Content = () => {
       title: "NEELI KARTHIK SHIVAMANI",
       subtitle: "",
       text: `I am Neeli Karthik Shivamani, a Computer Science Engineering student at Mohan Babu University.
-I am passionate about web development and creating digital solutions. Proficient in Java, Python, SQL, HTML, CSS, I have built projects like KindConnect Donation App, Mini Cloud Drive System, and Gym Management System.
+I am passionate about web development and creating digital solutions. Proficient in Java, Python, SQL, HTML, CSS, I have built projects like KindConnect Donation App, RK Health Management System, and Gym Management System.
 Apart from development, I am also a creative video editor skilled in Adobe Photoshop, Premiere Pro, CapCut, mobile editing, and system editing.
 As ISTE Social Media Team Lead and Events Organizer, I enjoy combining technical skills with creativity to deliver engaging content and solutions.
 I love learning new technologies and turning ideas into reality.`,
-      skills: ["React", "Three.js", "Premiere Pro", "Python", "SQL", "Java", "Adobe Photoshop", "Capcut"],
+      skills: ["React", "Three.js", "Python", "Groq AI / LLaMA", "Twilio", "Flask", "SQL", "Java", "Adobe Photoshop", "Capcut"],
       education: "Bachelor of Technology in Computer Science"
     },
     projects: {
@@ -30,8 +31,13 @@ I love learning new technologies and turning ideas into reality.`,
 Users can browse donation categories (clothes, books, groceries, money) and view a simulated donation flow. Integrated Google Gemini Vision API demo to identify items from images. Built as a responsive front-end only using HTML, CSS, and JavaScript.`
         },
         {
-          name: "Mini Cloud Drive System",
-          desc: "A secure web-based cloud storage platform where users can upload, store, organize, and access files from anywhere with a clean and simple interface."
+          name: "RK Health – AI Smart Patient Appointment & Medication Reminder System",
+          desc: `Built an AI-powered healthcare management dashboard that simplifies patient care and improves medication compliance.
+
+🔹 AI Summarization: Uses Groq & LLaMA 3.3-70B to transform complex doctor notes into easy-to-understand patient guides.
+🔹 Multi-Channel Reminders: Integrated Twilio SMS API and Google Calendar to automate appointment & medication alerts.
+🔹 Serverless Stack: Engineered a serverless infrastructure combining HTML5/CSS/JS, Google Apps Script, and Google Sheets DB alongside a local Python Flask option.`,
+          link: "https://rk-health-ai-smart-patient-appointment.onrender.com/"
         },
         {
           name: "Gym Management System",
@@ -170,6 +176,32 @@ Users can browse donation categories (clothes, books, groceries, money) and view
                 <p style={{ fontSize: isMobile ? '0.82rem' : '0.9rem', color: '#94a3b8', lineHeight: 1.6, whiteSpace: 'pre-line' }}>
                   {p.desc}
                 </p>
+                {p.link && (
+                  <div style={{ marginTop: '10px' }}>
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mono"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        padding: '6px 12px',
+                        background: 'rgba(56, 189, 248, 0.12)',
+                        border: '1px solid rgba(56, 189, 248, 0.3)',
+                        borderRadius: '6px',
+                        color: '#38bdf8',
+                        fontSize: '0.78rem',
+                        fontWeight: 600,
+                        textDecoration: 'none',
+                        transition: 'all 0.2s ease',
+                      }}
+                    >
+                      🌐 Live Demo ↗
+                    </a>
+                  </div>
+                )}
                 <div style={{ height: '1px', width: '36px', background: '#38bdf8', marginTop: '12px' }} />
               </div>
             ))}

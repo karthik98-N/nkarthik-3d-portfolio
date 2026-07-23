@@ -42,7 +42,13 @@ const ControlButton = ({ icon, action, setEagleMovement }) => {
 }
 
 const EagleControlsUI = () => {
-  const { isDroneMode, isPlacementMode, toggleDroneMode, togglePlacementMode, setEagleMovement, isFreeLook, setIsFreeLook } = useStore()
+  const isDroneMode = useStore((s) => s.isDroneMode)
+  const isPlacementMode = useStore((s) => s.isPlacementMode)
+  const toggleDroneMode = useStore((s) => s.toggleDroneMode)
+  const togglePlacementMode = useStore((s) => s.togglePlacementMode)
+  const setEagleMovement = useStore((s) => s.setEagleMovement)
+  const isFreeLook = useStore((s) => s.isFreeLook)
+  const setIsFreeLook = useStore((s) => s.setIsFreeLook)
 
   // Handle Keyboard input for desktop
   useEffect(() => {

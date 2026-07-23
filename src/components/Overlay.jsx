@@ -8,22 +8,32 @@ import HorseControlsUI from './HorseControlsUI'
 import useBreakpoint from '../hooks/useBreakpoint'
 
 const Overlay = () => {
-  const {
-    currentView, setView, isStarted,
-    isDayTime, toggleDayTime,
-    rainLevel, nextRainLevel,
-    dayPhase, nextDayPhase,
-    nightPhase, nextNightPhase,
-    isDroneMode, toggleDroneMode,
-    isPlacementMode, togglePlacementMode,
-    isHorsePlacementMode, toggleHorsePlacementMode,
-    isHorseMode, toggleHorseMode,
-    isTouchToMoveEnabled, toggleTouchToMove,
-    eagleScale, setEagleScale,
-    eagleMovementParams, setEagleMovementParams,
-    isFreeLook, setIsFreeLook,
-    setHorseMovement, setEagleMovement
-  } = useStore()
+  const currentView = useStore((s) => s.currentView)
+  const setView = useStore((s) => s.setView)
+  const isStarted = useStore((s) => s.isStarted)
+  const isDayTime = useStore((s) => s.isDayTime)
+  const toggleDayTime = useStore((s) => s.toggleDayTime)
+  const rainLevel = useStore((s) => s.rainLevel)
+  const nextRainLevel = useStore((s) => s.nextRainLevel)
+  const dayPhase = useStore((s) => s.dayPhase)
+  const nextDayPhase = useStore((s) => s.nextDayPhase)
+  const nightPhase = useStore((s) => s.nightPhase)
+  const nextNightPhase = useStore((s) => s.nextNightPhase)
+  const isDroneMode = useStore((s) => s.isDroneMode)
+  const toggleDroneMode = useStore((s) => s.toggleDroneMode)
+  const isHorsePlacementMode = useStore((s) => s.isHorsePlacementMode)
+  const toggleHorsePlacementMode = useStore((s) => s.toggleHorsePlacementMode)
+  const isHorseMode = useStore((s) => s.isHorseMode)
+  const toggleHorseMode = useStore((s) => s.toggleHorseMode)
+  const isTouchToMoveEnabled = useStore((s) => s.isTouchToMoveEnabled)
+  const toggleTouchToMove = useStore((s) => s.toggleTouchToMove)
+  const eagleScale = useStore((s) => s.eagleScale)
+  const setEagleScale = useStore((s) => s.setEagleScale)
+  const eagleMovementParams = useStore((s) => s.eagleMovementParams)
+  const setEagleMovementParams = useStore((s) => s.setEagleMovementParams)
+  const isFreeLook = useStore((s) => s.isFreeLook)
+  const setIsFreeLook = useStore((s) => s.setIsFreeLook)
+
   const [isEagleSettingsOpen, setIsEagleSettingsOpen] = React.useState(false)
   const { isMobile } = useBreakpoint()
 
@@ -183,7 +193,6 @@ const Overlay = () => {
             active: isDroneMode,
           },
         ].filter(btn => {
-          // Hide LOOK, PLACE, FLY, SET, and TOUCH by default in normal mode
           if (['LOOK', 'PLACE', 'FLY', 'SET', 'TOUCH'].includes(btn.label)) return false
           return true
         }).map(({ label, onClick, icon, active, title }) => (
